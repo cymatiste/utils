@@ -17,29 +17,11 @@ function adjustedPayment(baseAmt){
     var tempTotal = baseAmt*(1+pctFee) + flatFee;
     while( ((tempTotal - baseAmt) <= (tempTotal*pctFee + flatFee)) ){
         tempTotal += 0.01;
-        //console.log(tempTotal);
     }
     tempTotal = Math.round(tempTotal*100)/100;
     return tempTotal;
 }
 
-console.log("------------------");
-console.log("To pay $"+process.argv[2]+" send $"+adjustedPayment(process.argv[2]));
+console.log("");
+console.log("------------------\nTo pay $"+process.argv[2]+" send $"+adjustedPayment(process.argv[2]));
 
-/*
-
-function adjustedPayment(baseAmt){
-    var pctFee = 0.029;
-    var flatFee = 0.6;
-
-    var tempTotal = baseAmt*(1+pctFee) + flatFee;
-    while( ((tempTotal - baseAmt) <= (tempTotal*pctFee + flatFee)) ){
-        tempTotal += 0.01;
-        console.log(tempTotal);
-    }
-    return tempTotal;
-}
-
-console.log("------------------");
-console.log(process.argv[2]+" adjusted for fees => "+adjustedPayment(process.argv[2]));
- */
